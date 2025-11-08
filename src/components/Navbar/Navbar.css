@@ -1,0 +1,44 @@
+nav {
+    width: 100%;
+    padding: 20px 0;
+    background-color: #505e7e;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .brand {
+    color: #FDF7EB;
+    font-weight: 600;
+    font-size: 28px;
+    text-decoration: none;
+}
+
+nav ul.links-box {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+ul.links-box .link a {
+    text-decoration: none;
+    color: #FDF7EB;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+ul.links-box .link a:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+}
