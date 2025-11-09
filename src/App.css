@@ -7,11 +7,12 @@
 }
 
 :root {
-    background: #FDF7EB;
+    background: #FFFFFF;
     font-family: "Stack Sans Notch", Arial, Helvetica, sans-serif;
 }
 
 .container {
     max-width: 1280px;
     padding: 0px 6.5%;
+    margin: 0px auto;
 }

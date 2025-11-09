@@ -1,0 +1,15 @@
+.btn {
+    margin-top: 10px;
+    transition: all 0.3s cubic-bezier(0.25,0.10,0.25,1.00);
+    padding: 10px 25px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid #1D1D1D;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #1D1D1D;
+    color: #fff;
+}

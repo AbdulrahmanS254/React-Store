@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+
+import ProductCard from "../../components/ProductCard/ProductCard";
 import "./Home.css";
 
 export default function Home() {
@@ -52,11 +54,7 @@ export default function Home() {
                     <h2 className="home-title">Products</h2>
                     <div className="product-list">
                         {products.map((product) => (
-                            <div className="product-card">
-                                <h3>{product.title}</h3>
-                                <p className="product-desc">{product.description}</p>
-                                
-                            </div>
+                            <ProductCard key={product.id} productData={product}/>
                         ))}
                     </div>
                 </div>
