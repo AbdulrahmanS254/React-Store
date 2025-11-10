@@ -1,9 +1,9 @@
 import './Button.css'
 
-const Button = ({ btnText }) => {
+const Button = ({ btnText, ...otherProps }) => {
     return (
         <>
-            <button className="btn">{btnText}</button>
+            <button className="btn" {...otherProps}>{btnText}</button>
         </>
     );
 }

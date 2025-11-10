@@ -1,5 +1,4 @@
 .btn {
-    margin-top: 10px;
     transition: all 0.3s cubic-bezier(0.25,0.10,0.25,1.00);
     padding: 10px 25px;
     background-color: transparent;
