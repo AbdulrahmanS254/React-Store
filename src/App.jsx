@@ -3,18 +3,22 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import "./App.css"
 
+import { CartProvider } from "./context/CartContext";
+
 function App() {
     return (
-        <div className="app-layout">
-            <Navbar />
+        <CartProvider>
+            <div className="app-layout">
+                <Navbar />
 
-            <main>
+                <main>
 
-                <Outlet />
-            </main>
+                    <Outlet />
+                </main>
 
-            <Footer />
-        </div>
+                <Footer />
+            </div>
+        </CartProvider>
     );
 }
 

@@ -4,6 +4,8 @@ import Button from "../../components/Button/Button";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import "./Home.css";
 
+import { useCart } from "../../context/CartContext";
+
 export default function Home() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -90,8 +92,7 @@ export default function Home() {
                         btnText={"Prev"}
                         onClick={handlePrevPage}
                         disabled={currentPage === 1}
-                    >
-                    </Button>
+                    ></Button>
                     <span>
                         Page {currentPage} of {totalPages}
                     </span>

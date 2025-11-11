@@ -2,7 +2,11 @@ import { Link } from "react-router-dom";
 import { LuShoppingCart } from "react-icons/lu";
 import "./Navbar.css";
 
+import { useCart } from "../../context/CartContext";
+
 export default function Navbar() {
+    const { cartItems } = useCart();
+    const totalItems = cartItems.length;
     return (
         <nav>
             <div className="container">
@@ -17,8 +21,9 @@ export default function Navbar() {
                         <Link to="/product/">Sample Product</Link>
                     </li>
                     <li className="link">
-                        <Link to="">
+                        <Link to="/cart">
                             <LuShoppingCart />
+                            <span>{totalItems}</span>
                         </Link>
                     </li>
                 </ul>
