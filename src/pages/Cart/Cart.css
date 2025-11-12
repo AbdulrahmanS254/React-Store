@@ -1,0 +1,133 @@
+.cart-container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.cart-container h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+/* --- Empty Cart --- */
+.cart-empty {
+  text-align: center;
+  padding: 50px;
+}
+
+.cart-empty p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.btn-shop {
+  /* Using your .btn class from Button.css */
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #1D1D1D;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-shop:hover {
+  background-color: #333;
+}
+
+/* --- Cart Items List --- */
+.cart-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  align-items: center;
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border: 1px solid #eee;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.cart-item-details {
+  flex-grow: 1; /* Takes up available space */
+}
+
+.cart-item-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.cart-item-price {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 5px;
+}
+
+.cart-item-remove {
+  /* Using your .btn class from Button.css */
+  background-color: transparent;
+  border: 1px solid #ccc;
+  color: #777;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.cart-item-remove:hover {
+  background-color: #f7f7f7;
+  border-color: #aaa;
+}
+
+/* --- Cart Summary --- */
+.cart-summary {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Aligns total and button to the right */
+  gap: 15px;
+}
+
+.cart-total {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.btn-checkout {
+  /* Using your .btn-shop style */
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #1D1D1D;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-checkout:hover {
+  background-color: #333;
+}
