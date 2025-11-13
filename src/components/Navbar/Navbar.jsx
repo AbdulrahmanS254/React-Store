@@ -18,7 +18,7 @@ export default function Navbar() {
                         <Link to="/">Home</Link>
                     </li>
                     <li className="link">
-                        <Link to="/product/">Sample Product</Link>
+                        <Link to="/product/?id=1">Sample Product</Link>
                     </li>
                     <li className="link">
                         <Link to="/cart">
