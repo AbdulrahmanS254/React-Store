@@ -31,9 +31,9 @@ export default function Cart() {
                         <h2 className="cart-total">
                             Total: ${totalPay.toFixed(2)}
                         </h2>
-                        <button className="btn-checkout">
+                        <Link to="/checkout/" className="btn-checkout">
                             Proceed to Checkout
-                        </button>
+                        </Link>
                     </div>
                 </>
             )}

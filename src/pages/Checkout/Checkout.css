@@ -1,0 +1,25 @@
+/* هذا الكود يعطي تنسيقًا أساسيًا لحقول النموذج */
+.checkout-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.checkout-form input[type="text"],
+.checkout-form input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.checkout-form input[type="text"]:focus,
+.checkout-form input[type="email"]:focus {
+    outline: none;
+    border-color: #1D1D1D;
+    /* لونك الأساسي */
+    box-shadow: 0 0 0 2px rgba(29, 29, 29, 0.2);
+}
