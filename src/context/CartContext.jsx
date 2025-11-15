@@ -52,6 +52,9 @@ export function CartProvider({ children }) {
                         : item
                 );
             }
+            case "CLEAR_CART": {
+                return [];
+            }
         }
     }
 
@@ -83,6 +86,12 @@ export function CartProvider({ children }) {
         });
     };
 
+    const clearCart = () => {
+        dispatch({
+            type: "CLEAR_CART",
+        });
+    };
+
     return (
         <CartContext.Provider
             value={{
@@ -91,6 +100,7 @@ export function CartProvider({ children }) {
                 removeFromCart,
                 incrementQuantity,
                 decrementQuantity,
+                clearCart
             }}
         >
             {children}

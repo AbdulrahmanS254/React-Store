@@ -1,16 +1,71 @@
+import { useState } from "react";
 import { useCart } from "../../context/CartContext";
 import { Link } from "react-router-dom";
-import "./Checkout.css"; 
+import { useNavigate } from "react-router-dom";
+import "./Checkout.css";
 
 export default function Checkout() {
-    // 1. نحضر بيانات السلة لعرضها في ملخص الطلب
-    const { cartItems } = useCart();
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        address: "",
+        city: "",
+        zip: "",
+    });
 
-    // 2. نحسب الإجمالي (نفس الكود المستخدم في صفحة السلة)
+    const [inputErrors, setInputErrors] = useState({});
+
+    const navigate = useNavigate();
+
+    const { cartItems, clearCart } = useCart();
+
+    // total money
     const total = cartItems.reduce(
         (acc, item) => acc + item.price * item.quantity,
         0
     );
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
+    };
+
+    const validateForm = () => {
+        const newErrors = {};
+        if (!formData.name) newErrors.name = "Full Name is required";
+
+        if (!formData.email) {
+            newErrors.email = "Email is required";
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            newErrors.email = "Email is invalid";
+        }
+
+        if (!formData.address) newErrors.address = "Address is required";
+        if (!formData.city) newErrors.city = "City is required";
+        if (!formData.zip) newErrors.zip = "ZIP Code is required";
+
+        setInputErrors(newErrors);
+
+        return Object.keys(newErrors).length === 0; // returns an array with the keys of the object
+    };
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        const isValid = validateForm();
+
+        if (isValid) {
+            console.log("Order Placed:", {
+                customer: formData,
+                items: cartItems,
+                total: total.toFixed(2),
+            });
+            alert("Order Placed Successfully!");
+            clearCart();
+            navigate("/");
+        } else {
+            console.log("Form has errors");
+        }
+    };
 
     return (
         <div className="container my-12!">
@@ -22,32 +77,91 @@ export default function Checkout() {
                         Shipping Details
                     </h2>
 
-                    <form className="checkout-form">
+                    <form className="checkout-form" onSubmit={handleFormSubmit}>
                         <div className="mb-4">
                             <label htmlFor="name">Full Name</label>
-                            <input type="text" id="name" name="name" />
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                            />
+                            {inputErrors.name && (
+                                <p className="error-text">{inputErrors.name}</p>
+                            )}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="email">Email</label>
-                            <input type="email" id="email" name="email" />
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                            />
+                            {inputErrors.email && (
+                                <p className="error-text">
+                                    {inputErrors.email}
+                                </p>
+                            )}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="address">Address</label>
-                            <input type="text" id="address" name="address" />
+                            <input
+                                type="text"
+                                id="address"
+                                name="address"
+                                value={formData.address}
+                                onChange={handleInputChange}
+                            />
+                            {inputErrors.address && (
+                                <p className="error-text">
+                                    {inputErrors.address}
+                                </p>
+                            )}
                         </div>
 
                         <div className="flex flex-col md:flex-row gap-4">
                             <div className="mb-4 md:w-2/3">
                                 <label htmlFor="city">City</label>
-                                <input type="text" id="city" name="city" />
+                                <input
+                                    type="text"
+                                    id="city"
+                                    name="city"
+                                    value={formData.city}
+                                    onChange={handleInputChange}
+                                />
+                                {inputErrors.city && (
+                                    <p className="error-text">
+                                        {inputErrors.city}
+                                    </p>
+                                )}
                             </div>
                             <div className="mb-4 md:w-1/3">
                                 <label htmlFor="zip">ZIP Code</label>
-                                <input type="text" id="zip" name="zip" />
+                                <input
+                                    type="text"
+                                    id="zip"
+                                    name="zip"
+                                    value={formData.zip}
+                                    onChange={handleInputChange}
+                                />
+                                {inputErrors.zip && (
+                                    <p className="error-text">
+                                        {inputErrors.zip}
+                                    </p>
+                                )}
                             </div>
                         </div>
+                        <button
+                            type="submit"
+                            className="w-full bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-slate-700 transition-colors"
+                        >
+                            Place Order
+                        </button>
                     </form>
                 </div>
 
@@ -86,13 +200,6 @@ export default function Checkout() {
                             <span>Total</span>
                             <span>${total.toFixed(2)}</span>
                         </div>
-
-                        <button
-                            type="submit"
-                            className="w-full bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-slate-700 transition-colors"
-                        >
-                            Place Order
-                        </button>
                     </div>
                 </div>
             </div>
